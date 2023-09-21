@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.glitch.todolist.FirstFragment"
+        android:name="com.glitch.todolist.ui.dailynotes.DailyNotesFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_daily_notes">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
