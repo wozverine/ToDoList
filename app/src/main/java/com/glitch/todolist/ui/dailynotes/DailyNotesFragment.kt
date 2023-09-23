@@ -32,6 +32,7 @@ class DailyNotesFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         binding.firstRv.adapter
+
     }
 
     override fun onDestroyView() {
