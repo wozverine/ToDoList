@@ -34,4 +34,9 @@ class DailyNotesAdapter(
         }
     }
 
+    fun updateList(list: List<Note>){
+        noteList.clear()
+        noteList.addAll(list)
+        notifyItemRangeChanged(0,list.size)
+    }
 }

@@ -1,12 +1,14 @@
 package com.glitch.todolist.ui.dailynotes
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.glitch.todolist.R
+import com.glitch.todolist.data.source.Database
+import com.glitch.todolist.databinding.DialogAddNoteBinding
 import com.glitch.todolist.databinding.FragmentDailyNotesBinding
 
 class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
@@ -14,6 +16,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     private var _binding: FragmentDailyNotesBinding? = null
 
     private val binding get() = _binding!!
+    private val dailyNotesAdapter = DailyNotesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +31,36 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
-        binding.dailyNotesRv
+        with(binding) {
+            dailyNotesRv.adapter = dailyNotesAdapter
+            dailyNotesAdapter.updateList(Database.getDailyNotes())
 
+            floatingActionButton2.setOnClickListener {
+                showAddDialog()
+            }
+        }
+        /*binding.dailyNotesRv.adapter = dailyNotesAdapter
+
+        dailyNotesAdapter.updateList(Database.getDailyNotes())*/
+
+    }
+
+    private fun showAddDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        val binding = DialogAddNoteBinding.inflate(layoutInflater)
+        builder.setView(binding.root)
+        val dialog = builder.create()
+
+        with(binding) {
+            val title = textView.text.toString()
+            val desc = textView3.text.toString()
+
+            if (title.isNotEmpty() && desc.isNotEmpty()) {
+                Database.addDailyNotes(title, desc)
+                dialog.dismiss()
+            }
+        }
+        dialog.show()
     }
 
     override fun onDestroyView() {

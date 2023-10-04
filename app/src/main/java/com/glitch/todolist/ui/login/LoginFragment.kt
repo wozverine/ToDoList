@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.glitch.todolist.R
 import com.glitch.todolist.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -23,7 +24,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.loginNextBtn.setOnClickListener{
-            //findNavController().navigate()
+            findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
         }
     }
 

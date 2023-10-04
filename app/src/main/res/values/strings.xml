@@ -8,5 +8,6 @@
     <string name="textview_default">TextView</string>
     <string name="title">Title</string>
     <string name="desc">Description</string>
+    <string name="button">Button</string>
 
 </resources>
