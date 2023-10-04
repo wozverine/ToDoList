@@ -21,6 +21,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.loginNextBtn.setOnClickListener{
+            //findNavController().navigate()
+        }
     }
 
     override fun onDestroyView() {

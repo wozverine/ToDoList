@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.glitch.todolist.R
 import com.glitch.todolist.databinding.FragmentDailyNotesBinding
 
-class DailyNotesFragment : Fragment() {
+class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     private var _binding: FragmentDailyNotesBinding? = null
 
@@ -28,10 +28,10 @@ class DailyNotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
+        /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
-        binding.firstRv.adapter
+        }*/
+        binding.dailyNotesRv
 
     }
 
