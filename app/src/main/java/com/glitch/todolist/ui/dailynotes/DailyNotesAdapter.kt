@@ -29,14 +29,15 @@ class DailyNotesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(note: Note) {
             with(binding) {
-
+                tv1.text = note.title
+                tv2.text = note.description
             }
         }
     }
 
-    fun updateList(list: List<Note>){
+    fun updateList(list: List<Note>) {
         noteList.clear()
         noteList.addAll(list)
-        notifyItemRangeChanged(0,list.size)
+        notifyItemRangeChanged(0, list.size)
     }
 }

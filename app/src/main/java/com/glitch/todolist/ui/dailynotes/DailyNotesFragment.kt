@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.glitch.todolist.R
 import com.glitch.todolist.data.source.Database
 import com.glitch.todolist.databinding.DialogAddNoteBinding
@@ -19,8 +20,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     private val dailyNotesAdapter = DailyNotesAdapter()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentDailyNotesBinding.inflate(inflater, container, false)
@@ -38,8 +38,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
             floatingActionButton2.setOnClickListener {
                 showAddDialog()
             }
-        }
-        /*binding.dailyNotesRv.adapter = dailyNotesAdapter
+        }/*binding.dailyNotesRv.adapter = dailyNotesAdapter
 
         dailyNotesAdapter.updateList(Database.getDailyNotes())*/
 
@@ -47,18 +46,27 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     private fun showAddDialog() {
         val builder = AlertDialog.Builder(requireContext())
-        val binding = DialogAddNoteBinding.inflate(layoutInflater)
-        builder.setView(binding.root)
+        val dialogBinding = DialogAddNoteBinding.inflate(layoutInflater)
+        builder.setView(dialogBinding.root)
         val dialog = builder.create()
 
-        with(binding) {
-            val title = textView.text.toString()
-            val desc = textView3.text.toString()
+        with(dialogBinding) {
+            button.setOnClickListener() {
+                val title = textView.text.toString()
+                val desc = textView3.text.toString()
 
-            if (title.isNotEmpty() && desc.isNotEmpty()) {
-                Database.addDailyNotes(title, desc)
-                dialog.dismiss()
+                if (title.isNotEmpty() && desc.isNotEmpty()) {
+                    Database.addDailyNotes(title, desc)
+                    //binding.dailyNotesRv.adapter = dailyNotesAdapter
+                    dailyNotesAdapter.updateList(Database.getDailyNotes())
+                    dialog.dismiss()
+                } else {
+                    Toast.makeText(
+                        requireContext(), getString(R.string.fill_blanks), Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
+
         }
         dialog.show()
     }

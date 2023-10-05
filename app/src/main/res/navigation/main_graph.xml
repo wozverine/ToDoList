@@ -9,14 +9,13 @@
         android:id="@+id/DailyNotesFragment"
         android:name="com.glitch.todolist.ui.dailynotes.DailyNotesFragment"
         android:label="@string/daily_notes_fragment_label"
-        tools:layout="@layout/fragment_daily_notes">
-    </fragment>
+        tools:layout="@layout/fragment_daily_notes" />
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.glitch.todolist.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_DailyNotesFragment2"
             app:destination="@id/DailyNotesFragment" />
