@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">To Do List</string>
     <string name="action_settings">Ayarlar</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="daily_notes_fragment_label">Daily Notes Fragment</string>
     <string name="next">Sonraki</string>
     <string name="login">Giriş</string>
@@ -10,6 +9,7 @@
     <string name="title">Başlık</string>
     <string name="desc">Açıklama</string>
     <string name="button">Buton</string>
+    <string name="add">Ekle</string>
     <string name="fill_blanks">Lütfen boşlukları doldurunuz</string>
     <string name="username">Kullanıcı adı</string>
     <string name="password">Şifre</string>
