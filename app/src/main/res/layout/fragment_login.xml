@@ -6,59 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginFragment">
 
-    <TextView
-        android:id="@+id/login_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="100dp"
-        android:hint="@string/login"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@id/login_name_til"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wepik1"
+        android:id="@+id/iv_background"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_name_til"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="0.5"
+        android:background="@drawable/rectengler"
+        app:layout_constraintBottom_toBottomOf="@id/constraint_2"
+        app:layout_constraintTop_toTopOf="@id/constraint_2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="100dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_title_tv"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etNameLogin"
+
+        <TextView
+            android:id="@+id/login_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@id/login_name_til"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_name_til"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/action_settings"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_title_tv"
+            app:layout_constraintVertical_chainStyle="packed">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_password_til"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_name_til"
-        app:layout_constraintVertical_chainStyle="packed">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNameLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etPasswordLogin"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_password_til"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/action_settings" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_name_til"
+            app:layout_constraintVertical_chainStyle="packed">
 
-    <Button
-        android:id="@+id/login_next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="100dp"
-        android:text="@string/next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password_til"
-        app:layout_constraintVertical_chainStyle="packed" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="100dp"
+            android:text="@string/next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_password_til"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

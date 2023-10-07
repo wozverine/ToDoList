@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.glitch.todolist.R
 import com.glitch.todolist.databinding.FragmentLoginBinding
+import eightbitlab.com.blurview.RenderScriptBlur
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -31,4 +32,5 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

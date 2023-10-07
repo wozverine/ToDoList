@@ -9,5 +9,7 @@
     <string name="desc">Description</string>
     <string name="button">Button</string>
     <string name="fill_blanks">Please fill in the blanks</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 
 </resources>
