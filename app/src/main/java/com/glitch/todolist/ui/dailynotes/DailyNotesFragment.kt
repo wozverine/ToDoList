@@ -17,7 +17,10 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     private var _binding: FragmentDailyNotesBinding? = null
 
     private val binding get() = _binding!!
-    private val dailyNotesAdapter = DailyNotesAdapter()
+    private val dailyNotesAdapter = DailyNotesAdapter(
+        onNoteClick = ::onNoteClick
+        /*onNoteClick = {description -> Toast.makeText(requireContext(), description, Toast.LENGTH_SHORT).show()}*/
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,6 +45,10 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
         dailyNotesAdapter.updateList(Database.getDailyNotes())*/
 
+    }
+
+    private fun onNoteClick(desc: String) {
+        Toast.makeText(requireContext(), desc, Toast.LENGTH_SHORT).show()
     }
 
     private fun showAddDialog() {

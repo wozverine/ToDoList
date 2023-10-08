@@ -7,14 +7,14 @@ import com.glitch.todolist.data.model.Note
 import com.glitch.todolist.databinding.ItemDailyNoteBinding
 
 class DailyNotesAdapter(
-
+    private val onNoteClick: (String) -> Unit
 ) : RecyclerView.Adapter<DailyNotesAdapter.DailyNotesViewHolder>() {
 
     private val noteList = mutableListOf<Note>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyNotesViewHolder {
         val binding =
             ItemDailyNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return DailyNotesViewHolder(binding)
+        return DailyNotesViewHolder(binding, onNoteClick)
     }
 
     override fun onBindViewHolder(holder: DailyNotesViewHolder, position: Int) {
@@ -25,12 +25,17 @@ class DailyNotesAdapter(
         return noteList.size
     }
 
-    class DailyNotesViewHolder(private val binding: ItemDailyNoteBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class DailyNotesViewHolder(
+        private val binding: ItemDailyNoteBinding, val onNoteClick: (String) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(note: Note) {
             with(binding) {
                 tv1.text = note.title
                 tv2.text = note.description
+
+                root.setOnClickListener {
+                    onNoteClick(note.description)
+                }
             }
         }
     }
