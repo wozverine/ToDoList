@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.glitch.todolist.R
 import com.glitch.todolist.databinding.FragmentLoginBinding
-import eightbitlab.com.blurview.RenderScriptBlur
+import com.google.android.material.snackbar.Snackbar
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -23,9 +23,24 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginNextBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
+        with(binding) {
+            loginNextBtn.setOnClickListener {
+                val username = etNameLogin.text.toString()
+                val password = etPasswordLogin.text.toString()
+
+                if (checkFields(username = username,password = password)){
+
+                } else {
+                    Snackbar.make(it,getString(R.string.fill_blanks),Snackbar.LENGTH_SHORT).show()
+                }
+
+                findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
+            }
         }
+    }
+
+    private fun checkFields(username: String, password: String): Boolean {
+        return true
     }
 
     override fun onDestroyView() {

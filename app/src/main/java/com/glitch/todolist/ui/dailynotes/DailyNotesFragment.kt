@@ -18,8 +18,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     private val binding get() = _binding!!
     private val dailyNotesAdapter = DailyNotesAdapter(
-        onNoteClick = ::onNoteClick
-        /*onNoteClick = {description -> Toast.makeText(requireContext(), description, Toast.LENGTH_SHORT).show()}*/
+        onNoteClick = ::onNoteClick/*onNoteClick = {description -> Toast.makeText(requireContext(), description, Toast.LENGTH_SHORT).show()}*/
     )
 
     override fun onCreateView(

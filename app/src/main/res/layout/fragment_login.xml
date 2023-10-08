@@ -53,7 +53,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_title_tv"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:layout_constraintVertical_chainStyle="packed"
+            app:startIconDrawable="@drawable/ic_person">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etNameLogin"
@@ -71,7 +72,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_name_til"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:layout_constraintVertical_chainStyle="packed"
+            app:startIconDrawable="@drawable/ic_lock">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etPasswordLogin"
