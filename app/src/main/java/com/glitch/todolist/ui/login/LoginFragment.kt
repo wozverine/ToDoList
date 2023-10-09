@@ -1,6 +1,7 @@
 package com.glitch.todolist.ui.login
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,22 +26,26 @@ class LoginFragment : Fragment() {
 
         with(binding) {
             loginNextBtn.setOnClickListener {
-                val username = etNameLogin.text.toString()
+                val email = etMailLogin.text.toString()
                 val password = etPasswordLogin.text.toString()
 
-                if (checkFields(username = username,password = password)){
-
+                if (checkFields(email = email, password = password)) {
+                    findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
                 } else {
-                    Snackbar.make(it,getString(R.string.fill_blanks),Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(it, getString(R.string.fill_blanks), Snackbar.LENGTH_SHORT).show()
                 }
 
-                findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
             }
         }
     }
 
-    private fun checkFields(username: String, password: String): Boolean {
-        return true
+    private fun checkFields(email: String, password: String): Boolean {
+        return when {
+            Patterns.EMAIL_ADDRESS.matcher(email).matches().not() -> false
+            password.isEmpty() -> false
+            password.length < 6 -> false
+            else -> true
+        }
     }
 
     override fun onDestroyView() {

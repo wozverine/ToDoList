@@ -11,6 +11,6 @@
     <string name="button">Buton</string>
     <string name="add">Ekle</string>
     <string name="fill_blanks">Lütfen boşlukları doldurunuz</string>
-    <string name="username">Kullanıcı adı</string>
+    <string name="email">Mail Adresi</string>
     <string name="password">Şifre</string>
 </resources>
