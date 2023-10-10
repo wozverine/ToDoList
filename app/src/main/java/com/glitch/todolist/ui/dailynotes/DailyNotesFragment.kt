@@ -1,6 +1,8 @@
 package com.glitch.todolist.ui.dailynotes
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import com.glitch.todolist.databinding.FragmentDailyNotesBinding
 class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     private var _binding: FragmentDailyNotesBinding? = null
+    private lateinit var sharedPref: SharedPreferences
 
     private val binding get() = _binding!!
     private val dailyNotesAdapter = DailyNotesAdapter(
@@ -33,13 +36,17 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedPref = requireActivity().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
+        val mail = sharedPref.getString("mail", "name@gmail.com")
+
         with(binding) {
             dailyNotesRv.adapter = dailyNotesAdapter
             dailyNotesAdapter.updateList(Database.getDailyNotes())
-
+            Database.addDailyNotes("ÜRÜN", "desc")
             floatingActionButton2.setOnClickListener {
                 showAddDialog()
             }
+            name.text = mail
         }/*binding.dailyNotesRv.adapter = dailyNotesAdapter
 
         dailyNotesAdapter.updateList(Database.getDailyNotes())*/

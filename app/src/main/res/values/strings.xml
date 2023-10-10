@@ -12,5 +12,7 @@
     <string name="fill_blanks">Please fill in the blanks</string>
     <string name="email">E-mail</string>
     <string name="password">Password</string>
-
+    <string name="welcome">Welcome to Notes</string>
+    <string name="hello">Hello y/n</string>
+    <string name="search">Search</string>
 </resources>
