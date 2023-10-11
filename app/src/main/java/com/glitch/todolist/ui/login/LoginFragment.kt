@@ -41,27 +41,33 @@ class LoginFragment : Fragment() {
             loginNextBtn.setOnClickListener {
                 val email = etMailLogin.text.toString()
                 val password = etPasswordLogin.text.toString()
+                val test = checkFields(email = email, password = password)
 
-                if (checkFields(email = email, password = password)) {
+                if (!test[0]) {
+                    Snackbar.make(it, getString(R.string.fill_blanks), Snackbar.LENGTH_SHORT).show()
+                } else if (!test[2]) {
+                    Snackbar.make(it, getString(R.string.password_short), Snackbar.LENGTH_SHORT)
+                        .show()
+                } else if (!test[1]) {
+                    Snackbar.make(it, getString(R.string.email_format), Snackbar.LENGTH_SHORT)
+                        .show()
+                } else {
                     sharedPref.edit().putBoolean("isLogin", true).apply()
                     sharedPref.edit().putString("mail", email).apply()
                     findNavController().navigate(R.id.action_loginFragment_to_DailyNotesFragment2)
-                } else if (checkFields(email, password)) {
 
-                } else {
-                    Snackbar.make(it, getString(R.string.fill_blanks), Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     private fun checkFields(email: String, password: String): (BooleanArray) {
-        return when {
-            Patterns.EMAIL_ADDRESS.matcher(email).matches().not() -> booleanArrayOf(false, true)
-            password.isEmpty() -> booleanArrayOf(true, false)
-            password.length < 6 -> booleanArrayOf(true, false)
-            else -> booleanArrayOf(true, true)
-        }
+        var boolArray = booleanArrayOf(false, false, false)
+        boolArray[0] = !(password.isEmpty() || email.isEmpty())
+        boolArray[1] = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        boolArray[2] = password.length >= 6
+
+        return boolArray
     }
 
     override fun onDestroyView() {

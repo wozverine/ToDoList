@@ -10,7 +10,7 @@
         android:id="@+id/iv_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/wepik4" />
+        android:background="@drawable/wepik3" />
 
     <TextView
         android:id="@+id/title"
@@ -25,6 +25,17 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="@id/daily_notes_rv"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/baseline_face_retouching_natural_24"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/name"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/name"
@@ -44,12 +55,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:background="@color/yellow_3"
-        app:queryHint="@string/search"
+        android:background="@color/yellow_2"
+        android:clickable="true"
+        android:inputType="text"
+        app:goIcon="@drawable/baseline_face_retouching_natural_24"
         app:layout_constraintBottom_toTopOf="@id/daily_notes_rv"
         app:layout_constraintStart_toStartOf="@id/daily_notes_rv"
-        app:layout_constraintTop_toBottomOf="@id/name">
-    </androidx.appcompat.widget.SearchView>
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:queryHint="@string/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/daily_notes_rv"
