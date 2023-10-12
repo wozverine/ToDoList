@@ -10,7 +10,8 @@
         android:id="@+id/iv_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/wepik3" />
+        android:background="@drawable/wepik3"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title"
@@ -55,8 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:background="@color/yellow_2"
-        android:clickable="true"
+        android:background="@color/green_4"
         android:inputType="text"
         app:goIcon="@drawable/baseline_face_retouching_natural_24"
         app:layout_constraintBottom_toTopOf="@id/daily_notes_rv"
@@ -87,8 +87,9 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/add_icon"
-        app:backgroundTint="@color/yellow_2"
+        app:backgroundTint="@color/green_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/button_to_add_new_task_to_the_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

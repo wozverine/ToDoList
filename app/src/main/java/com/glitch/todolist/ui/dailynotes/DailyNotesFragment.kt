@@ -35,7 +35,6 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Database.addDailyNotes("ÜRÜN", "desc")
         sharedPref = requireActivity().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
         val mail = sharedPref.getString("mail", "name@gmail.com")
 
