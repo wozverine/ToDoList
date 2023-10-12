@@ -13,6 +13,7 @@ import com.glitch.todolist.R
 import com.glitch.todolist.data.source.Database
 import com.glitch.todolist.databinding.DialogAddNoteBinding
 import com.glitch.todolist.databinding.FragmentDailyNotesBinding
+import java.util.Locale
 
 class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
@@ -36,7 +37,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = requireActivity().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        val mail = sharedPref.getString("mail", "name@gmail.com")
+        val mail = sharedPref.getString("mail", "name@gmail.com") ?: "y/n"
 
         with(binding) {
             dailyNotesRv.adapter = dailyNotesAdapter
@@ -44,7 +45,14 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
             floatingActionButton2.setOnClickListener {
                 showAddDialog()
             }
-            name.text = mail
+            name.text = buildString {
+                append(getString(R.string.hello))
+                append(" ")
+                append(mail.substringBefore("@").replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                })
+            }
+
         }/*binding.dailyNotesRv.adapter = dailyNotesAdapter
 
         dailyNotesAdapter.updateList(Database.getDailyNotes())*/

@@ -15,7 +15,7 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="welcome">Welcome to Notes</string>
-    <string name="hello">Hello y/n</string>
+    <string name="hello">Hello </string>
     <string name="search">Search</string>
     <string name="button_to_add_new_task_to_the_list">button to add new task to the list</string>
 </resources>
